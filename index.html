@@ -1,94 +1,199 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MY STORE - Boutique</title>
+<title>AMINE SPORT | Boutique Sportive</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial;background:#f5f5f5;color:#222}
-header{background:#111;color:white;padding:22px;text-align:center}
-header h1{margin:0;font-size:30px}
-nav{background:#222;padding:14px;text-align:center}
-nav a{color:white;text-decoration:none;margin:12px}
-.hero{background:#222;color:white;text-align:center;padding:55px 15px}
-.hero h2{font-size:30px}
-.products{padding:20px;display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
-.card{background:white;border-radius:12px;overflow:hidden;text-align:center;padding-bottom:15px;box-shadow:0 2px 8px #ddd}
-.card img{width:100%;height:155px;object-fit:cover}
-.card h3{font-size:16px}
-.price{color:#e44;font-weight:bold}
-button{background:#111;color:white;border:0;padding:11px 18px;border-radius:7px;cursor:pointer}
-footer{background:#111;color:white;text-align:center;padding:25px}
-@media(min-width:700px){.products{grid-template-columns:repeat(4,1fr)}}
+body{margin:0;font-family:Arial,sans-serif;background:#101010;color:#fff}
+header{background:#080808;padding:18px;text-align:center;border-bottom:3px solid #ffd000}
+.logo{font-size:32px;font-weight:900;color:#ffd000}
+.logo span{color:white}
+header p{color:#aaa;margin:5px}
+nav{display:flex;justify-content:center;gap:22px;padding:15px;background:#191919;flex-wrap:wrap}
+nav a{color:white;text-decoration:none;font-weight:bold}
+.hero{padding:65px 15px;text-align:center;background:linear-gradient(135deg,#252525,#080808)}
+.hero h1{font-size:38px;color:#ffd000;margin:0 0 12px}
+.hero p{color:#ddd;font-size:17px}
+.btn{display:inline-block;background:#ffd000;color:#111;padding:13px 23px;border-radius:8px;text-decoration:none;font-weight:bold;border:0;cursor:pointer}
+section{padding:35px 15px;max-width:1100px;margin:auto}
+h2{text-align:center;color:#ffd000;font-size:27px}
+.subtitle{text-align:center;color:#aaa;margin-bottom:25px}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:14px}
+.card{background:#202020;border:1px solid #393939;border-radius:12px;overflow:hidden;text-align:center;padding-bottom:15px}
+.picture{height:145px;background:linear-gradient(135deg,#303030,#151515);display:flex;align-items:center;justify-content:center;font-size:65px}
+.card h3{font-size:16px;min-height:38px;padding:0 5px}
+.price{color:#ffd000;font-size:21px;font-weight:bold}
+.card button{margin-top:10px}
+.packs{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.pack{background:#202020;border:2px solid #ffd000;border-radius:14px;padding:20px;text-align:center}
+.pack.featured{border-color:#ff3939}
+.pack .price{font-size:34px}
+.pack ul{text-align:left;line-height:2;color:#ddd;padding-left:22px}
+.cart{background:#202020;padding:20px;border-radius:12px}
+.cart-item{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid #444}
+.cart button{background:#333;color:white;border:0;border-radius:5px;padding:5px 10px}
+.total{font-size:24px;color:#ffd000;text-align:right;margin:20px 0}
+footer{background:#080808;text-align:center;padding:30px 15px;border-top:3px solid #ffd000}
+footer strong{color:#ffd000}
+.whatsapp{position:fixed;bottom:18px;right:15px;background:#20bd62;color:white;padding:14px 18px;border-radius:30px;text-decoration:none;font-weight:bold;box-shadow:0 3px 12px #000}
 </style>
 </head>
 <body>
 
 <header>
-<h1>MY STORE</h1>
-<p>Votre boutique en ligne au Maroc</p>
+ <div class="logo">👑 AMINE <span>SPORT</span></div>
+ <p>Votre boutique sportive au Maroc</p>
 </header>
 
 <nav>
-<a href="#">Accueil</a>
-<a href="#products">Produits</a>
-<a href="#contact">Contact</a>
+ <a href="#home">Accueil</a>
+ <a href="#products">Produits</a>
+ <a href="#packs">Packs</a>
+ <a href="#cart">Panier 🛒</a>
 </nav>
 
-<section class="hero">
-<h2>Bienvenue chez MY STORE</h2>
-<p>Découvrez nos meilleurs articles aux meilleurs prix !</p>
-<button onclick="document.getElementById('products').scrollIntoView()">Découvrir</button>
+<div class="hero" id="home">
+ <h1>AMINE SPORT</h1>
+ <p>Tout ce qu'il te faut pour le sport !</p>
+ <p>Qualité • Confort • Performance</p>
+ <a href="#products" class="btn">DÉCOUVRIR NOS PRODUITS</a>
+</div>
+
+<section id="products">
+ <h2>🔥 NOS PRODUITS</h2>
+ <p class="subtitle">Découvrez notre sélection sportive</p>
+ <div class="products" id="productList"></div>
 </section>
 
-<h2 style="text-align:center;margin-top:30px">Nos produits</h2>
-
-<section class="products" id="products">
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500">
-<h3>Chaussures sport</h3>
-<p class="price">250 DH</p>
-<button onclick="buy('Chaussures sport')">Commander</button>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500">
-<h3>T-shirt</h3>
-<p class="price">120 DH</p>
-<button onclick="buy('T-shirt')">Commander</button>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500">
-<h3>Sac</h3>
-<p class="price">180 DH</p>
-<button onclick="buy('Sac')">Commander</button>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500">
-<h3>Chaussures</h3>
-<p class="price">220 DH</p>
-<button onclick="buy('Chaussures')">Commander</button>
-</div>
-
+<section id="packs">
+ <h2>⭐ NOS PACKS SPORTIFS</h2>
+ <p class="subtitle">Profitez de nos packs complets</p>
+ <div class="packs">
+  <div class="pack featured">
+   <h3>🔥 PACK SPORTIF</h3>
+   <div class="price">185 DH</div>
+   <ul>
+    <li>Débardeur de sport</li>
+    <li>Mini protège</li>
+    <li>Chaussettes silicone</li>
+    <li>2 Lasto blanc</li>
+    <li>1 paire demi-bas</li>
+   </ul>
+   <button class="btn" onclick="addPack('Pack sportif',185)">Ajouter au panier</button>
+  </div>
+  <div class="pack">
+   <h3>👑 PACK COMPLET</h3>
+   <div class="price">265 DH</div>
+   <ul>
+    <li>Débardeur de sport</li>
+    <li>Bandes de résistance (5 pièces)</li>
+    <li>Chaussettes silicone</li>
+    <li>2 Lasto blanc</li>
+    <li>Mini protège</li>
+    <li>1 paire demi-bas</li>
+    <li>Brassard capitaine</li>
+    <li>Sac à cordelettes</li>
+   </ul>
+   <button class="btn" onclick="addPack('Pack complet',265)">Ajouter au panier</button>
+  </div>
+ </div>
 </section>
 
-<footer id="contact">
-<h2>MY STORE</h2>
-<p>Livraison partout au Maroc 🇲🇦</p>
-<p>Contactez-nous sur WhatsApp</p>
+<section id="cart">
+ <h2>🛒 MON PANIER</h2>
+ <div class="cart">
+  <div id="cartItems">Votre panier est vide.</div>
+  <div class="total">Total : <span id="total">0</span> DH</div>
+  <button class="btn" onclick="order()">Commander sur WhatsApp</button>
+ </div>
+</section>
+
+<footer>
+ <h2>AMINE SPORT</h2>
+ <p>🚚 Livraison partout au Maroc</p>
+ <p>⏱️ Livraison en 24-48H</p>
+ <p>📱 Commande sur WhatsApp</p>
+ <strong>0645551505</strong>
+ <p>© 2026 AMINE SPORT - Tous droits réservés</p>
 </footer>
 
-<script>
-function buy(product){
-let phone="2126XXXXXXXX";
-let message="Bonjour, je souhaite commander : "+product;
-window.open("https://wa.me/"+phone+"?text="+encodeURIComponent(message));
-}
-</script>
+<a class="whatsapp" href="https://wa.me/212645551505">WhatsApp 💬</a>
 
+<script>
+const products=[
+{name:"Débardeur de sport",price:45,icon:"👕"},
+{name:"Bandes de résistance (5)",price:40,icon:"🏋️"},
+{name:"Chaussettes silicone",price:35,icon:"🧦"},
+{name:"2 Lasto blanc",price:20,icon:"⚪"},
+{name:"Mini protège",price:25,icon:"🛡️"},
+{name:"Demi-bas",price:25,icon:"🧦"},
+{name:"Brassard capitaine",price:15,icon:"🎽"},
+{name:"Sac à cordelettes",price:25,icon:"🎒"}
+];
+
+let cart=[];
+
+function showProducts(){
+ document.getElementById("productList").innerHTML=products.map((p,i)=>`
+ <div class="card">
+ <div class="picture">${p.icon}</div>
+ <h3>${p.name}</h3>
+ <div class="price">${p.price} DH</div>
+ <button class="btn" onclick="addProduct(${i})">Ajouter +</button>
+ </div>`).join("");
+}
+
+function addProduct(i){
+ cart.push(products[i]);
+ showCart();
+}
+
+function addPack(name,price){
+ cart.push({name,price});
+ showCart();
+}
+
+function removeItem(i){
+ cart.splice(i,1);
+ showCart();
+}
+
+function showCart(){
+ const box=document.getElementById("cartItems");
+ if(cart.length===0){
+ box.innerHTML="Votre panier est vide.";
+ }else{
+ box.innerHTML=cart.map((p,i)=>`
+ <div class="cart-item">
+ <span>${p.name} - ${p.price} DH</span>
+ <button onclick="removeItem(${i})">Supprimer</button>
+ </div>`).join("");
+ }
+ document.getElementById("total").textContent=
+ cart.reduce((s,p)=>s+p.price,0);
+}
+
+function order(){
+ if(cart.length===0){
+ alert("Votre panier est vide !");
+ return;
+ }
+ let message="Bonjour AMINE SPORT ! Je souhaite commander :%0A";
+ cart.forEach(p=>{
+ message+="• "+p.name+" : "+p.price+" DH%0A";
+ });
+ message+="%0ATotal : "+
+ cart.reduce((s,p)=>s+p.price,0)+" DH";
+ message+="%0A%0AMon nom : %0AMa ville : %0AMon adresse : ";
+ window.open("https://wa.me/212645551505?text="+
+ encodeURIComponent(message.replaceAll("%0A","\n")),"_blank");
+}
+
+showProducts();
+showCart();
+</script>
 </body>
 </html>
